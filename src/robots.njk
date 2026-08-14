@@ -1,0 +1,28 @@
+---
+permalink: /robots.txt
+eleventyExcludeFromCollections: true
+---
+# All crawlers welcome, including AI answer engines.
+User-agent: *
+Allow: /
+
+# Explicitly allow major AI crawlers (they are covered by * above; listed for clarity).
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+Sitemap: {{ '/sitemap.xml' | url | absoluteUrl(site.baseUrl) }}

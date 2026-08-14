@@ -1,3 +1,8 @@
+/* Shield against mobile force-dark re-processing; this is a light design. */
+:root {
+  color-scheme: only light;
+}
+
 /* via https://getbootstrap.com/docs/5.0/examples/jumbotron/ */
 .bd-placeholder-img {
   font-size: 1.125rem;

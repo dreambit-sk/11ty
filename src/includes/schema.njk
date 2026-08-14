@@ -1,0 +1,65 @@
+{# Structured data (schema.org / JSON-LD) — helps Google rich results and AI answer engines
+   understand the business. Rendered site-wide from the base layout. #}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": ["LocalBusiness", "EducationalOrganization"],
+  "@id": "{{ site.baseUrl }}/#business",
+  "name": "{{ business.brandName }}",
+  "legalName": "{{ business.legalName }}",
+  "url": "{{ site.baseUrl }}/",
+  "email": "{{ business.email }}",
+  "image": "{{ '/assets/images/dreambit-logo-transparent.png' | url | absoluteUrl(site.baseUrl) }}",
+  "description": "{{ site.description }}",
+  "foundingDate": "{{ business.foundingDate }}",
+  "knowsLanguage": ["en", "sk"],
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "{{ business.street }}",
+    "addressLocality": "{{ business.city }}",
+    "postalCode": "{{ business.postalCode }}",
+    "addressCountry": "{{ business.countryCode }}"
+  },
+  "areaServed": [
+    {%- for area in business.areaServed -%}
+    { "@type": "City", "name": "{{ area }}" }{% if not loop.last %},{% endif %}
+    {%- endfor -%}
+  ],
+  {%- if business.socialProfiles.length %}
+  "sameAs": [
+    {%- for url in business.socialProfiles -%}
+    "{{ url }}"{% if not loop.last %},{% endif %}
+    {%- endfor -%}
+  ],
+  {%- endif %}
+  "makesOffer": [
+    {%- for offer in business.offerings -%}
+    {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Course",
+        "name": "{{ offer.name }}",
+        "description": "{{ offer.description }}",
+        "provider": { "@type": "Organization", "name": "{{ business.brandName }}" }
+      }
+    }{% if not loop.last %},{% endif %}
+    {%- endfor -%}
+  ],
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "bestRating": "5",
+    "reviewCount": "{{ reviews.length }}"
+  },
+  "review": [
+    {%- for review in reviews -%}
+    {
+      "@type": "Review",
+      "author": { "@type": "Person", "name": "{{ review.author }}" },
+      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+      "reviewBody": {{ review.text | dump | safe }}
+    }{% if not loop.last %},{% endif %}
+    {%- endfor -%}
+  ]
+}
+</script>

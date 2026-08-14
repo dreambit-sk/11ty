@@ -1,9 +1,9 @@
 ---
 meta:
-  lang: en
-  title: DreamBit English Lessons
+  lang: sk
+  title: Kurzy angličtiny v Stupave a online
   image: "/assets/images/dreambit-logo-transparent.png"
-  description: DreamBit offer exceptional English Lessons for all ages.
+  description: "Súkromné kurzy angličtiny v Stupave a online. Bežná aj pracovná angličtina pre všetky vekové kategórie so skúsenou lektorkou (15 rokov v Londýne)."
 layout: base
 eleventyNavigation:
   key: Home
@@ -11,8 +11,8 @@ eleventyNavigation:
 
 
 <div>
-  <!-- <h2>Welcome to DreamBit</h2> -->
-  <img class="rounded-3 w-100" src="/assets/images/jarka.png" alt="Welcome to DreamBit"/>
+  <h1 class="visually-hidden">DreamBit – kurzy angličtiny v Stupave a online</h1>
+  <img class="rounded-3 w-100" src="/assets/images/jarka.png" alt="DreamBit – kurzy angličtiny v Stupave a online"/>
 </div>
 <div class="row align-items-md-stretch">
   <div class="col-md-6 mt-3">
@@ -30,7 +30,7 @@ eleventyNavigation:
       <p>
         V prípade záujmu si môžete lekcie sami rezervovať až tri mesiace vopred. Zmenu a zrušenie termínu si robí študent sám cez tento systém (link v automatickom emaili). Zrušenie lekcie MIN 24h vopred, inak je administratívny poplatok za nedodržaný termín spoplatnený v plnej výške objednanej hodiny pri ďalšej návšteve. Platbu poprosím počas stretnutia alebo vopred. Cena sa odlišuje v prípade väčšieho počtu študentov, skupiny. Neváhajte ma kontaktovať, ak máte doplňujúce otázky ohľadne rezervácie/platby.
       </p>
-      <a href="{{ 'pages/book ' | url }}" class="btn btn-outline-light">Rezervácia</a>
+      <a href="{{ '/pages/book' | url }}" class="btn btn-outline-light">Rezervácia</a>
     </div>
   </div>
   <div class="col-md-6 mt-3">
@@ -50,12 +50,10 @@ eleventyNavigation:
     </div>
   </div>
   <div class="col h-100 m-3 rounded-3" style="background-color: #e6ecef">
-    <h4 class="p-2 text-center">Reviews</h4>
-    <p class="p-2 text-center">"Veľmi sme spokojní. Skvelé prostredie, fantastický individuálny prístup a úžasne sympatická žienka."</br><i>Jana</i></p>
-    <p class="p-2 text-center">"Excelentná spolupráca, maximálna spokojnosť 😊"</br><i>Lucia</i></p>
-    <p class="p-2 text-center">"Veľmi príjemná pani lektorka. Cítila som sa veľmi príjemne. Všetko dôkladne vysvetlila. Výborný prístup k študentom. Ďakujem" </br><i>Janka</i></p>
-    <p class="p-2 text-center">"Všetko je super, Jarka je príjemný človek. Stále pripravená a hodiny niesú vôbec nudné - úplne iné ako bežné kurzy. Odporúčam."</br><i>Katarina</i></p>
-    <p class="p-2 text-center">"Oceňujem flexibilitu, rezervačný systém, doobedné hodiny osobne, a aj online, parkovanie bez problémov, a aj možnosť dvojhodinovky. Robím citeľný progres."</br><i>Paľo</i></p>
+    <h2 class="h4 p-2 text-center">Referencie</h2>
+    {%- for review in reviews %}
+    <p class="p-2 text-center">"{{ review.text }}"<br><i>{{ review.author }}</i></p>
+    {%- endfor %}
   </div>
 </div>
 

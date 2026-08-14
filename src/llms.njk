@@ -1,0 +1,25 @@
+---
+permalink: /llms.txt
+eleventyExcludeFromCollections: true
+---
+# {{ business.brandName }}
+
+> {{ site.description }}
+
+## O nás
+Skúsená lektorka angličtiny v Stupave. 15 rokov života v Londýne (štúdium a práca ako finančná analytička v londýnskom City), rok v USA. Výučba čerpá z praxe v zahraničí a z biznis prostredia. Lekcie osobne v Stupave aj online.
+
+## Služby
+{% for offer in business.offerings -%}
+- {{ offer.name }}: {{ offer.description }}
+{% endfor %}
+
+## Oblasť pôsobenia
+{{ business.areaServed | join(", ") }} a online.
+
+## Kontakt a rezervácia
+- E-mail: {{ business.email }}
+- Rezervácia lekcií online: {{ '/pages/book' | url | absoluteUrl(site.baseUrl) }}
+
+## Prevádzkovateľ
+{{ business.legalName }}, {{ business.street }}, {{ business.postalCode }} {{ business.city }}, {{ business.country }}. IČO {{ business.ico }}.

@@ -19,6 +19,9 @@
   "keywords": [],
   "author": "Matthias Andrasch",
   "license": "MIT",
+  "engines": {
+    "node": ">=22"
+  },
   "browserslist": [
     "last 4 versions"
   ],

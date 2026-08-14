@@ -3,7 +3,7 @@ const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
 
 // Base setup for builds, needed for og tags and correct image paths
 // (mostly for github pages deployment, see build-deploy.yaml)
-const baseUrl = process.env.BASE_URL || 'http://localhost:8080';
+const baseUrl = process.env.BASE_URL || 'https://dreambit.sk';
 // e.g. 'https://mandrasch.github.io/'
 const pathPrefix = process.env.PATH_PREFIX || '/';
 // e.g. '/11ty-plain-boostrap5/'
@@ -15,8 +15,10 @@ console.log('pathPrefix is set to ...', pathPrefix);
 // related: https://github.com/11ty/eleventy/issues/1641
 const globalSiteData = {
   title: "DreamBit",
-  description: "English Lessons",
-  locale: 'en',
+  description: "Súkromné kurzy angličtiny v Stupave a online. Bežná aj pracovná angličtina pre všetky vekové kategórie.",
+  locale: 'sk',
+  lang: 'sk',
+  ogLocale: 'sk_SK',
   baseUrl: baseUrl,
   pathPrefix: pathPrefix,
 }
@@ -84,6 +86,11 @@ module.exports = function (eleventyConfig) {
   // Watch for changes (and reload browser)
   eleventyConfig.addWatchTarget("./src/assets"); // normal (static) assets
   eleventyConfig.addWatchTarget("./dist") // laravel-mix output changes
+
+  // ISO 8601 date filter (used by sitemap.xml)
+  eleventyConfig.addFilter("isoDate", function (dateObj) {
+    return (dateObj instanceof Date ? dateObj : new Date(dateObj)).toISOString();
+  });
 
   // RandomId function for IDs used by labelled-by
   // Thanks https://github.com/mozilla/nunjucks/issues/724#issuecomment-207581540
